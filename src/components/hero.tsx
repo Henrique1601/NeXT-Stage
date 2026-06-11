@@ -18,47 +18,29 @@ export default function Hero() {
       className="relative min-h-[100dvh] flex items-center justify-center px-6"
     >
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
-        >
+        <div className="animate-hero-fadein [animation-delay:0s]">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#D4A853]/20 bg-[#D4A853]/5 mb-8">
             <span className="w-2 h-2 rounded-full bg-[#D4A853] animate-pulse" />
             <span className="text-xs text-[#D4A853] tracking-widest uppercase font-medium">
               Três desenvolvedores fullstack
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-8"
-        >
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.9] mb-8 animate-hero-fadein [animation-delay:0.15s]">
           <span className="text-white">Transformamos ideias em</span>
           <br />
           <span className="bg-gradient-to-r from-[#D4A853] via-[#E8C35A] to-[#F5C542] bg-clip-text text-transparent">
             software de alto nível
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
-          className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
+        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed animate-hero-fadein [animation-delay:0.3s]">
           Da concepção ao deploy, criamos aplicações web, mobile e APIs que impulsionam
           o seu negócio com qualidade e transparência total.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
+        <div className="animate-hero-fadein [animation-delay:0.5s]">
           <ShinyButton
             onClick={() => {
               const lenis = (window as unknown as { lenis?: { scrollTo: (target: string) => void } }).lenis;
@@ -72,14 +54,9 @@ export default function Hero() {
           >
             Solicitar Orçamento
           </ShinyButton>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-wrap justify-center gap-8 mt-16"
-        >
+        <div className="flex flex-wrap justify-center gap-8 mt-16 animate-hero-fadein [animation-delay:0.7s]">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -97,7 +74,7 @@ export default function Hero() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
