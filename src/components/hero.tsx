@@ -60,7 +60,12 @@ export default function Hero() {
         >
           <ShinyButton
             onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              const lenis = (window as unknown as { lenis?: { scrollTo: (target: string) => void } }).lenis;
+              if (lenis) {
+                lenis.scrollTo("#contact");
+              } else {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }
             }}
             className="text-base px-10 py-4"
           >

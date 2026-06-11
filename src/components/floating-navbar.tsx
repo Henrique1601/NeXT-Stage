@@ -35,9 +35,11 @@ export default function FloatingNavbar() {
   }, []);
 
   const scrollTo = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string) => void } }).lenis;
+    if (lenis) {
+      lenis.scrollTo(`#${id}`);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
   }, []);

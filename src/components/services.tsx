@@ -10,31 +10,26 @@ const services = [
     icon: Globe,
     title: "Desenvolvimento Web",
     desc: "Sites, plataformas e dashboards com React, Next.js e as tecnologias mais modernas do mercado.",
-    span: "lg:col-span-1",
   },
   {
     icon: Smartphone,
     title: "Aplicativos Mobile",
     desc: "Apps nativos e cross-platform com React Native e Flutter, do protótipo à publicação.",
-    span: "lg:col-span-1",
   },
   {
     icon: Server,
     title: "APIs & Backend",
     desc: "APIs robustas e escaláveis em Node.js, Python e Go com banco de dados PostgreSQL e MongoDB.",
-    span: "lg:col-span-1",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
     desc: "Interfaces elegantes e funcionais com foco em usabilidade, acessibilidade e performance.",
-    span: "lg:col-span-1",
   },
   {
     icon: Lightbulb,
     title: "Consultoria Técnica",
     desc: "Arquitetura de software, code review e estratégia técnica para acelerar seu projeto.",
-    span: "lg:col-span-2",
   },
 ];
 
@@ -60,13 +55,10 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {services.slice(0, 4).map((s, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((s, i) => (
             <ServiceCard key={s.title} {...s} index={i} />
           ))}
-          <div className="lg:col-span-2 lg:col-start-2">
-            <ServiceCard {...services[4]} index={4} />
-          </div>
         </div>
       </div>
     </section>
@@ -90,6 +82,7 @@ function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 * index, ease: [0.32, 0.72, 0, 1] }}
+      whileHover={{ y: -4 }}
     >
       <div className="relative group h-full">
         <div className="p-[1px] rounded-2xl h-full bg-gradient-to-b from-white/[0.08] to-transparent">

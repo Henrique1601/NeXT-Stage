@@ -53,6 +53,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.32, 0.72, 0, 1] }}
+              whileHover={{ y: -4 }}
             >
               <div className="relative group h-full p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent hover:from-[#D4A853]/20 transition-all duration-500">
                 <div className="relative h-full rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden">
