@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ShinyButton } from "./shiny-button";
+import AnimatedCounter from "./animated-counter";
 import { Code2, Users, Briefcase } from "lucide-react";
 
 const stats = [
@@ -91,7 +92,7 @@ export default function Hero() {
                 <s.icon className="w-4 h-4 text-[#D4A853]" />
               </div>
               <div className="text-left">
-                <p className="text-white font-bold text-lg">{s.value}</p>
+                <p className="text-white font-bold text-lg"><AnimatedCounter value={s.value} /></p>
                 <p className="text-white/40 text-xs">{s.label}</p>
               </div>
             </motion.div>

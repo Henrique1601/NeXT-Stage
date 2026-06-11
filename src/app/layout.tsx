@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/lib/theme";
 import SmoothScrollProvider from "@/components/smooth-scroll";
 import ScrollProgress from "@/components/scroll-progress";
 
@@ -51,6 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
       <head>
@@ -84,7 +86,9 @@ export default function RootLayout({
         >
           Pular para o conteúdo
         </a>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <ThemeProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -7,14 +7,16 @@ import Services from "@/components/services";
 import TechStack from "@/components/tech-stack";
 import Team from "@/components/team";
 import Portfolio from "@/components/portfolio";
+import Process from "@/components/process";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import BackToTop from "@/components/back-to-top";
 
 export default function Home() {
   return (
-    <main id="main-content" className="relative min-h-screen bg-[#050505]">
+    <main id="main-content" className="relative min-h-screen" style={{ backgroundColor: "var(--background)" }}>
       <GoldenOrbsBackground />
-      <div className="fixed inset-0 z-[1] bg-[#050505]/20 pointer-events-none" />
+      <div className="fixed inset-0 z-[1] pointer-events-none bg-overlay" />
 
       <FloatingNavbar />
 
@@ -24,8 +26,11 @@ export default function Home() {
         <TechStack />
         <Team />
         <Portfolio />
+        <Process />
         <Contact />
       </div>
+
+      <BackToTop />
 
       <Footer />
     </main>

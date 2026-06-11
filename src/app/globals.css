@@ -11,6 +11,26 @@
   --gold-500: #F5C542;
   --gold-600: #B8860B;
   --muted: rgba(255, 255, 255, 0.6);
+  --navbar: #050505;
+}
+
+[data-theme="light"] {
+  --background: #f5f3ef;
+  --foreground: #1a1a1a;
+  --card: rgba(0, 0, 0, 0.02);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-hover: rgba(0, 0, 0, 0.04);
+  --muted: rgba(0, 0, 0, 0.55);
+  --navbar: #f5f3ef;
+  --overlay: transparent;
+}
+
+.bg-overlay {
+  background-color: rgba(5, 5, 5, 0.2);
+}
+
+[data-theme="light"] .bg-overlay {
+  background-color: transparent;
 }
 
 @theme inline {
