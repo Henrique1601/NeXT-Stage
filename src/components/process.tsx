@@ -43,7 +43,7 @@ export default function Process() {
         <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-2 tracking-tight">
           Como trabalhamos
         </h2>
-        <p className="text-white/40 text-sm mb-16 max-w-lg">
+        <p className="text-white/50 text-sm mb-16 max-w-lg">
           Um fluxo transparente e colaborativo da ideia ao lançamento.
         </p>
 
@@ -65,7 +65,7 @@ export default function Process() {
                   <s.icon className="w-4 h-4 text-[#D4A853]" />
                 </div>
                 <h3 className="text-white font-semibold text-sm mb-2">{s.title}</h3>
-                <p className="text-white/40 text-xs leading-relaxed">{s.description}</p>
+                <p className="text-white/50 text-xs leading-relaxed">{s.description}</p>
               </div>
 
               {i < steps.length - 1 && (
