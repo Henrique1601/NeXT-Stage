@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# obsidian workspace
+Cerebro-do-proejeto/NextStage/.obsidian/workspace.json
+
 # reference projects
 Arquivos para se insprirar/
 
@@ -48,3 +51,5 @@ page-snapshot.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel

@@ -3,15 +3,35 @@
 import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { DotPattern } from "./dot-pattern";
-import { GitFork, ExternalLink } from "lucide-react";
+import { GitFork, ExternalLink, Globe, type LucideIcon } from "lucide-react";
 
-const team = [
+interface SocialLink {
+  label: string;
+  icon: LucideIcon;
+  href: string;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  stack: string[];
+  placeholder: string;
+  social?: SocialLink[];
+}
+
+const team: TeamMember[] = [
   {
     name: "Henrique",
     role: "Desenvolvedor Fullstack",
     bio: "Especialista em React, Next.js e Node.js. Apaixonado por arquitetura de software e experiência do usuário.",
     stack: ["React", "Next.js", "Node.js", "TypeScript"],
     placeholder: "H",
+    social: [
+      { label: "GitHub", icon: GitFork, href: "https://github.com/Henrique1601" },
+      { label: "LinkedIn", icon: ExternalLink, href: "https://www.linkedin.com/in/henrique-bezerra-dos-santos-9802321a3" },
+      { label: "Portfólio", icon: Globe, href: "https://bezerraportifolio.netlify.app" },
+    ],
   },
   {
     name: "Desenvolvedor 2",
@@ -88,14 +108,22 @@ export default function Team() {
                       ))}
                     </div>
 
-                    <div className="flex gap-3 mt-auto">
-                      <button className="w-8 h-8 rounded-full border border-white/[0.06] flex items-center justify-center hover:border-[#D4A853]/30 transition-colors">
-                        <GitFork className="w-3.5 h-3.5 text-white/40" />
-                      </button>
-                      <button className="w-8 h-8 rounded-full border border-white/[0.06] flex items-center justify-center hover:border-[#D4A853]/30 transition-colors">
-                        <ExternalLink className="w-3.5 h-3.5 text-white/40" />
-                      </button>
-                    </div>
+                    {member.social && (
+                      <div className="flex gap-3 mt-auto">
+                        {member.social.map((s) => (
+                          <a
+                            key={s.label}
+                            href={s.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={s.label}
+                            className="w-8 h-8 rounded-full border border-white/[0.06] flex items-center justify-center hover:border-[#D4A853]/30 transition-colors"
+                          >
+                            <s.icon className="w-3.5 h-3.5 text-white/40" aria-hidden="true" />
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

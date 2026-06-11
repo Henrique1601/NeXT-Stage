@@ -87,20 +87,22 @@ export default function Contact() {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
+                      <label htmlFor="nome" className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
                         Nome
                       </label>
                       <input
+                        id="nome"
                         type="text"
                         placeholder="Seu nome"
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#D4A853]/40 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
+                      <label htmlFor="email" className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
                         Email
                       </label>
                       <input
+                        id="email"
                         type="email"
                         placeholder="seu@email.com"
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#D4A853]/40 transition-colors"
@@ -108,20 +110,22 @@ export default function Contact() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
+                    <label htmlFor="telefone" className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
                       Telefone
                     </label>
                     <input
+                      id="telefone"
                       type="tel"
                       placeholder="(11) 99999-9999"
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#D4A853]/40 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
+                    <label htmlFor="mensagem" className="block text-white/40 text-xs mb-2 tracking-wide uppercase">
                       Mensagem
                     </label>
                     <textarea
+                      id="mensagem"
                       rows={4}
                       placeholder="Conte-nos sobre seu projeto..."
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#D4A853]/40 transition-colors resize-none"

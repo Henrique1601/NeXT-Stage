@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Documentação do Portfólio NeXT Stage.md",
+                "file": "Melhorias e Próximos Passos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Documentação do Portfólio NeXT Stage"
+              "title": "Melhorias e Próximos Passos"
             }
           }
         ]
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documentação do Portfólio NeXT Stage.md",
+                "file": "Melhorias e Próximos Passos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Documentação do Portfólio NeXT Stage"
+              "title": "Links inversos para Melhorias e Próximos Passos"
             }
           },
           {
@@ -114,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documentação do Portfólio NeXT Stage.md",
+                "file": "Melhorias e Próximos Passos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Documentação do Portfólio NeXT Stage"
+              "title": "Links de saída para Melhorias e Próximos Passos"
             }
           },
           {
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documentação do Portfólio NeXT Stage.md",
+                "file": "Melhorias e Próximos Passos.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Documentação do Portfólio NeXT Stage"
+              "title": "Sumário de Melhorias e Próximos Passos"
             }
           }
         ]
@@ -187,6 +187,7 @@
   "active": "5f04e7f86d05f348",
   "lastOpenFiles": [
     "Documentação do Portfólio NeXT Stage.md",
+    "Melhorias e Próximos Passos.md",
     "Bem-vindo.md"
   ]
 }

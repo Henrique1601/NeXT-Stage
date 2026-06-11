@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const sections = [
@@ -14,6 +14,25 @@ const sections = [
 
 export default function FloatingNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -38,7 +57,11 @@ export default function FloatingNavbar() {
               <button
                 key={s.id}
                 onClick={() => scrollTo(s.id)}
-                className="text-sm text-white/60 hover:text-white/90 transition-colors"
+                className={`text-sm transition-colors ${
+                  activeSection === s.id
+                    ? "text-white/90"
+                    : "text-white/60 hover:text-white/90"
+                }`}
               >
                 {s.label}
               </button>

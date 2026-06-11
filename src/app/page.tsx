@@ -12,7 +12,7 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#050505]">
+    <main id="main-content" className="relative min-h-screen bg-[#050505]">
       <GoldenOrbsBackground />
       <div className="fixed inset-0 z-[1] bg-[#050505]/20 pointer-events-none" />
 
