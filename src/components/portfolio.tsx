@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { DotPattern } from "./dot-pattern";
 import { ExternalLink } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 const projects = [
   {
@@ -24,17 +24,17 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const { ref, inView } = useInView();
+
   return (
     <section
       id="portfolio"
       className="relative min-h-[100dvh] flex items-center justify-center px-6 py-24"
     >
       <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+        <div
+          ref={ref}
+          className={`fade-in-up ${inView ? "in-view" : ""}`}
         >
           <SectionLabel number="04" label="Portfólio" />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -43,19 +43,16 @@ export default function Portfolio() {
           <p className="text-white/40 max-w-xl mb-12 text-sm md:text-base">
             Alguns dos trabalhos que entregamos com excelência.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {projects.map((project, i) => (
-            <motion.div
+            <div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.32, 0.72, 0, 1] }}
-              whileHover={{ y: -4 }}
+              className={`fade-in-up ${inView ? "in-view" : ""}`}
+              style={{ animationDelay: `${0.1 * i}s` }}
             >
-              <div className="relative group h-full p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent hover:from-[#D4A853]/20 transition-all duration-500">
+              <div className="relative group h-full p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent hover:from-[#D4A853]/20 hover:-translate-y-1 transition-all duration-500">
                 <div className="relative h-full rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden">
                   <DotPattern width={20} height={20} />
 
@@ -82,7 +79,7 @@ export default function Portfolio() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { Lightbulb, FileCode, TestTube, Rocket } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 const steps = [
   {
@@ -36,6 +36,8 @@ const steps = [
 ];
 
 export default function Process() {
+  const { ref, inView } = useInView({ rootMargin: "0px 0px -80px 0px" });
+
   return (
     <section id="process" className="relative py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -47,15 +49,12 @@ export default function Process() {
           Um fluxo transparente e colaborativo da ideia ao lançamento.
         </p>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div ref={ref} className="grid md:grid-cols-4 gap-6">
           {steps.map((s, i) => (
-            <motion.div
+            <div
               key={s.step}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="relative group"
+              className={`fade-in-up ${inView ? "in-view" : ""} relative group`}
+              style={{ animationDelay: `${i * 0.12}s` }}
             >
               <div className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-xl hover:border-white/[0.12] transition-colors h-full">
                 <span className="text-4xl font-bold text-white/[0.06] absolute top-3 right-5 leading-none select-none">
@@ -71,7 +70,7 @@ export default function Process() {
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-[1px] bg-white/[0.08]" />
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

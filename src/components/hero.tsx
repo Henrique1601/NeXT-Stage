@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ShinyButton } from "./shiny-button";
 import AnimatedCounter from "./animated-counter";
 import { Code2, Users, Briefcase } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 const stats = [
   { icon: Code2, value: "50+", label: "Projetos Entregues" },
@@ -12,6 +12,8 @@ const stats = [
 ];
 
 export default function Hero() {
+  const { ref, inView } = useInView({ threshold: 0.3 });
+
   return (
     <section
       id="hero"
@@ -56,14 +58,12 @@ export default function Hero() {
           </ShinyButton>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 mt-16 animate-hero-fadein [animation-delay:0.7s]">
+        <div ref={ref} className="flex flex-wrap justify-center gap-8 mt-16">
           {stats.map((s, i) => (
-            <motion.div
+            <div
               key={s.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
-              className="flex items-center gap-3"
+              className={`flex items-center gap-3 fade-in-up ${inView ? "in-view" : ""}`}
+              style={{ animationDelay: `${0.8 + i * 0.1}s` }}
             >
               <div className="w-10 h-10 rounded-full border border-white/[0.06] bg-white/[0.03] flex items-center justify-center">
                 <s.icon className="w-4 h-4 text-[#D4A853]" />
@@ -72,7 +72,7 @@ export default function Hero() {
                 <p className="text-white font-bold text-lg"><AnimatedCounter value={s.value} /></p>
                 <p className="text-white/40 text-xs">{s.label}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

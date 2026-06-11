@@ -1,22 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { DotPattern } from "./dot-pattern";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 export default function Contact() {
+  const { ref, inView } = useInView();
+
   return (
     <section
       id="contact"
       className="relative min-h-[100dvh] flex items-center justify-center px-6 py-24"
     >
       <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+        <div
+          ref={ref}
+          className={`fade-in-up ${inView ? "in-view" : ""}`}
         >
           <SectionLabel number="05" label="Contato" />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -25,15 +25,11 @@ export default function Contact() {
           <p className="text-white/40 max-w-xl mb-12 text-sm md:text-base">
             Preencha o formulário e entraremos em contato em até 12 horas.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-            className="lg:col-span-2"
+          <div
+            className={`fade-in-left ${inView ? "in-view" : ""} lg:col-span-2`}
           >
             <div className="relative p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent h-full">
               <div className="relative h-full rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden p-7">
@@ -69,14 +65,11 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="lg:col-span-3"
+          <div
+            className={`fade-in-right ${inView ? "in-view" : ""} lg:col-span-3`}
+            style={{ animationDelay: "0.1s" }}
           >
             <div className="relative p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent">
               <div className="relative rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden p-7">
@@ -141,7 +134,7 @@ export default function Contact() {
                 </form>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

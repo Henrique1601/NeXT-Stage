@@ -79,9 +79,44 @@ body {
   animation: hero-fadein 0.9s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in-up, .fade-in-left, .fade-in-right {
+  opacity: 0;
+}
+
+.fade-in-up.in-view { animation: fade-in-up 0.7s cubic-bezier(0.32, 0.72, 0, 1) both; }
+.fade-in-left.in-view { animation: fade-in-left 0.7s cubic-bezier(0.32, 0.72, 0, 1) both; }
+.fade-in-right.in-view { animation: fade-in-right 0.7s cubic-bezier(0.32, 0.72, 0, 1) both; }
+
 @keyframes pulse-gold {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  animation: shimmer 4s ease-in-out infinite;
+  animation-delay: 3s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -91,9 +126,10 @@ body {
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .animate-hero-fadein {
+  .animate-hero-fadein,
+  .fade-in-up, .fade-in-left, .fade-in-right {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translateY(0) translateX(0) !important;
     animation: none !important;
   }
 }

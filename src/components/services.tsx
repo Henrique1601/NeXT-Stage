@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { DotPattern } from "./dot-pattern";
 import { Globe, Smartphone, Server, Palette, Lightbulb, type LucideIcon } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 const services = [
   {
@@ -34,17 +34,17 @@ const services = [
 ];
 
 export default function Services() {
+  const { ref, inView } = useInView();
+
   return (
     <section
       id="services"
       className="relative min-h-[100dvh] flex items-center justify-center px-6 py-24"
     >
       <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+        <div
+          ref={ref}
+          className={`fade-in-up ${inView ? "in-view" : ""}`}
         >
           <SectionLabel number="01" label="Serviços" />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -53,11 +53,11 @@ export default function Services() {
           <p className="text-white/40 max-w-xl mb-12 text-sm md:text-base">
             Entregamos soluções completas de software, do conceito ao deploy contínuo.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((s, i) => (
-            <ServiceCard key={s.title} {...s} index={i} />
+            <ServiceCard key={s.title} {...s} index={i} inView={inView} />
           ))}
         </div>
       </div>
@@ -70,21 +70,20 @@ function ServiceCard({
   title,
   desc,
   index,
+  inView,
 }: {
   icon: LucideIcon;
   title: string;
   desc: string;
   index: number;
+  inView: boolean;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.1 * index, ease: [0.32, 0.72, 0, 1] }}
-      whileHover={{ y: -4 }}
+    <div
+      className={`fade-in-up ${inView ? "in-view" : ""}`}
+      style={{ animationDelay: `${0.1 * index}s` }}
     >
-      <div className="relative group h-full">
+      <div className="relative group h-full hover:-translate-y-1 transition-transform duration-300">
         <div className="p-[1px] rounded-2xl h-full bg-gradient-to-b from-white/[0.08] to-transparent">
           <div className="relative h-full rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden">
             <DotPattern width={20} height={20} />
@@ -98,6 +97,6 @@ function ServiceCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

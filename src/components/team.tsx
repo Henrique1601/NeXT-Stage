@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { SectionLabel } from "./section-label";
 import { DotPattern } from "./dot-pattern";
 import { GitFork, ExternalLink, Globe, type LucideIcon } from "lucide-react";
+import { useInView } from "@/lib/use-in-view";
 
 interface SocialLink {
   label: string;
@@ -50,17 +50,17 @@ const team: TeamMember[] = [
 ];
 
 export default function Team() {
+  const { ref, inView } = useInView();
+
   return (
     <section
       id="team"
       className="relative min-h-[100dvh] flex items-center justify-center px-6 py-24"
     >
       <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+        <div
+          ref={ref}
+          className={`fade-in-up ${inView ? "in-view" : ""}`}
         >
           <SectionLabel number="03" label="Equipe" />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -70,19 +70,16 @@ export default function Team() {
             Três desenvolvedores apaixonados por tecnologia, trabalhando lado a lado para
             entregar projetos de excelência.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {team.map((member, i) => (
-            <motion.div
+            <div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.32, 0.72, 0, 1] }}
-              whileHover={{ y: -4 }}
+              className={`fade-in-up ${inView ? "in-view" : ""}`}
+              style={{ animationDelay: `${0.1 * i}s` }}
             >
-              <div className="relative group h-full p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent">
+              <div className="relative group h-full p-[1px] rounded-2xl bg-gradient-to-b from-white/[0.08] to-transparent hover:-translate-y-1 transition-transform duration-300">
                 <div className="relative h-full rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden p-6 md:p-7 flex flex-col">
                   <DotPattern width={20} height={20} />
                   <div className="relative z-10">
@@ -128,7 +125,7 @@ export default function Team() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
